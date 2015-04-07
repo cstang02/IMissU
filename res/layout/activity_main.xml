@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="left" 
+    android:layout_marginLeft="10dip"
+    android:layout_marginRight="10dip"
+    android:layout_marginTop="10dip">
+
+    <TextView
+	    android:id="@+id/textView0"
+	    android:text="配对教程:" 
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp" />
+    
+    <ScrollView
+	    android:id="@+id/scrollView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:background="#AAAAAA">
+		    <TextView
+		        android:id="@+id/logText"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		   		android:paddingLeft="3dip" 
+		   		android:textSize="18dp"
+		   		android:text="1) 让对方点击Copy按钮复制他/她的User ID到剪贴板，然后通过微信等方式发送给自己。\n2) 将获得的ID粘贴到Target ID文本框内，点击Miss按钮进行配对！"/>
+    </ScrollView>
+    
+    <TextView
+	    android:id="@+id/textView1"
+	    android:text="User ID:" 
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp" 
+        android:layout_marginTop="20dip"/>
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left">    
+	    <TextView
+	        android:id="@+id/idText"
+	        android:layout_width="220dip"
+	        android:layout_height="wrap_content"
+	        android:background="#707070"
+	        android:hint="Your ID shows here"
+	        android:text=""
+	        android:textSize="20dp" />
+	    <Button
+	        android:id="@+id/copyBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dip"
+	        android:text="Copy"
+	        android:textSize="18dp" />
+    </LinearLayout>
+    <TextView
+		    android:id="@+id/textView2"
+		    android:text="Target ID:" 
+		    android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="24dp" 
+	        android:layout_marginTop="5dip"/>                    	    
+	<LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+	    android:focusable="true" 
+		android:focusableInTouchMode="true" >
+	    <EditText
+	        android:id="@+id/inputText"
+	        android:layout_width="220dip"
+	        android:layout_height="wrap_content"
+	        android:background="#707070"
+	        android:textSize="20dp"
+	        android:hint="Paste his/her ID here"
+	        android:ems="10" />
+	    <Button
+	        android:id="@+id/missBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dip"
+	        android:textSize="18dp"
+	        android:text="Miss" />
+    </LinearLayout>   
+</LinearLayout>
