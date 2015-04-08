@@ -12,7 +12,7 @@ import android.os.Message;
 
 public class Pairer implements Runnable {
 	
-	public static final String url = "http://imissuservice.sinaapp.com?date=%1$s&id=%2$s";
+	public static final String url = "http://imissuservice.sinaapp.com/?date=%1$s&id=%2$s";
 	public boolean running = true;
 	
 	public String date = null;
@@ -102,6 +102,6 @@ public class Pairer implements Runnable {
 				}
 				catch (Exception e) {}
 			}
-		} while (running && Utils.TargetId.isEmpty());
+		} while (running);
 	}
 }
