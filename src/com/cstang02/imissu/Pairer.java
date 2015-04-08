@@ -102,6 +102,6 @@ public class Pairer implements Runnable {
 				}
 				catch (Exception e) {}
 			}
-		} while (running);
+		} while (running && Utils.TargetId.isEmpty());
 	}
 }
