@@ -34,7 +34,7 @@ public class Utils {
     public static String UserId = "";
     public static String TargetId = "";
     public static String Message = "";
-    public static int Result = 0;
+    public static String Result = "";
     public static int Count = 0;
     public static int Day = 0;
     public static Application App = null;
