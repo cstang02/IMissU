@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         {
         	if (getIntent().getAction().equals("android.intent.action.MAIN"))
         	{
-    			push(Utils.TargetId, Utils.UserId + " " + Utils.increaseCount(getApplicationContext()));        
+    			push();        
         	}
         }
         
@@ -123,7 +123,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	}
     }
     
-    public void push(String id, String msg)
+    public void push()
     {
     	if (Utils.Day != Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
         {
@@ -131,7 +131,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         	Utils.clearCount(getApplicationContext());
         }
     	
-    	new Thread(new Pusher(id, msg)).start();
+    	new Thread(new Pusher(Utils.TargetId, Utils.UserId + " " + Utils.increaseCount(getApplicationContext()))).start();
     }
     
     @Override
@@ -163,7 +163,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	else if (intent.getAction().equals("android.intent.action.MAIN"))
     	{
     		checkPushService();
-			push(Utils.TargetId, Utils.UserId + " " + Utils.increaseCount(getApplicationContext()));        
+			push();        
     	}
     }
 
