@@ -12,11 +12,7 @@ import com.baidu.yun.channel.model.PushUnicastMessageRequest;
 import com.baidu.yun.channel.model.PushUnicastMessageResponse;
 
 public class Pusher implements Runnable {
-	
-	private static final String API_KEY = "XwkXMdBDHbccgGRiooyj45HG";
-	private static final String API_SECRET = "";
-    
-	private BaiduChannelClient channelClient = new BaiduChannelClient(new ChannelKeyPair(API_KEY, API_SECRET));
+	private BaiduChannelClient channelClient = new BaiduChannelClient(new ChannelKeyPair(Utils.API_KEY, Utils.API_SECRET));
 	
 	public String userId = null;
 	public String message = null;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cstang02.imissu"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="4"
+    android:versionName="1.1.2" >
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -45,23 +45,22 @@
                 <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
                 <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
                 <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
-                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
             </intent-filter>
         </receiver>
         
         <!-- push必须的receviver和service声明 -->
         <receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
                 <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
-		<!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
-		<action android:name="android.intent.action.MEDIA_MOUNTED" />
-		<action android:name="android.intent.action.USER_PRESENT" />
-		<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-		<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+				<!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+				<action android:name="android.intent.action.MEDIA_MOUNTED" />
+				<action android:name="android.intent.action.USER_PRESENT" />
+				<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+				<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
@@ -78,8 +77,8 @@
         <service
             android:name="com.baidu.android.pushservice.PushService"
             android:exported="true"
-            android:process=":bdservice_v1" >
-            <intent-filter >
+            android:process=":bdservice_v1">
+            <intent-filter android:priority="1000">
                 <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE"/>
             </intent-filter>
         </service>
@@ -88,8 +87,5 @@
             android:name="com.baidu.android.pushservice.CommandService"
             android:exported="true" />
         <!-- push结束 -->
-        
-        <!-- 在百度开发者中心查询应用的API Key -->
-        <meta-data android:name="api_key" android:value="XwkXMdBDHbccgGRiooyj45HG" />
     </application>
 </manifest>

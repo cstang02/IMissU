@@ -40,10 +40,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         
         pairBtn = (Button) findViewById(R.id.pairBtn);
         pairBtn.setOnClickListener(this);
-        
-        PushManager.startWork(getApplicationContext(),
-                PushConstants.LOGIN_TYPE_API_KEY,
-                Utils.getMetaValue(MainActivity.this, "api_key"));
+     
+        PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, Utils.API_KEY);
         
         Utils.App = getApplication();
         Utils.Handler = new Handler(){
@@ -80,26 +78,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         {
         	pairBtn.setText("Pair");
         }
-        
-        new Thread() {
-        	public void run()
-        	{
-	        	while (true)
-	        	{
-	        		try
-	        		{
-	        			Thread.sleep(3600 * 1000);
-        	    		checkPushService();
-	        		}
-	        		catch (Exception e) {}
-	        	}
-        	}
-        }.start();
     }
 
     @Override
     public void onClick(View v) {
-    	String test = pairBtn.getText().toString().toLowerCase();
     	if (pairBtn.getText().toString().toLowerCase().equals("pair"))
     	{ 		
     		String date = datePicker.getYear() + "-" + datePicker.getMonth() + "-" + datePicker.getDayOfMonth();
@@ -117,9 +99,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	}
     	else
     	{
-    		PushManager.startWork(getApplicationContext(),
-                    PushConstants.LOGIN_TYPE_API_KEY,
-                    Utils.getMetaValue(MainActivity.this, "api_key"));
+    		PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, Utils.API_KEY);
     	}
     }
     
@@ -162,7 +142,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     	}
     	else if (intent.getAction().equals("android.intent.action.MAIN"))
     	{
-    		checkPushService();
 			push();        
     	}
     }
@@ -176,16 +155,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onDestroy() {
         //Utils.setLogText(getApplicationContext(), Utils.logStringCache);
         super.onDestroy();
-    }
-    
-    private void checkPushService()
-    {
-    	if (!PushManager.isConnected(getApplicationContext()))
-    	{
-    		PushManager.startWork(getApplicationContext(),
-                    PushConstants.LOGIN_TYPE_API_KEY,
-                    Utils.getMetaValue(MainActivity.this, "api_key"));
-    	}
     }
 
     private void updateDisplay() {

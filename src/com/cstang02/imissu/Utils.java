@@ -30,6 +30,9 @@ public class Utils {
     public static final String EXTRA_MESSAGE = "message";
     public static final String INTERNAL_ACTION = "com.cstang02.imissu.action.internal";
     
+    public static final String API_KEY = "XwkXMdBDHbccgGRiooyj45HG";
+    public static final String API_SECRET = "7WhGYmhyA3S2kbORjXq9nby5RhzhKXER";
+	
     public static String logStringCache = "";
     public static String UserId = "";
     public static String TargetId = "";
@@ -40,29 +43,7 @@ public class Utils {
     public static Application App = null;
     public static Handler Handler = null;
     
-    private static Toast toast = null;
-    
-    public static String getMetaValue(Context context, String metaKey) {
-        Bundle metaData = null;
-        String apiKey = null;
-        if (context == null || metaKey == null) {
-            return null;
-        }
-        try {
-            ApplicationInfo ai = context.getPackageManager()
-                    .getApplicationInfo(context.getPackageName(),
-                            PackageManager.GET_META_DATA);
-            if (null != ai) {
-                metaData = ai.metaData;
-            }
-            if (null != metaData) {
-                apiKey = metaData.getString(metaKey);
-            }
-        } catch (NameNotFoundException e) {
-
-        }
-        return apiKey;
-    }
+    private static Toast toast = null;    
 
     public static boolean hasBind(Context context) {
         SharedPreferences sp = PreferenceManager
