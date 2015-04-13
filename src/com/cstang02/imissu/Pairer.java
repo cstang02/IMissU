@@ -15,8 +15,8 @@ public class Pairer implements Runnable {
 	public static final String url = "http://imissuservice.sinaapp.com/?date=%1$s&id=%2$s";
 	public boolean running = true;
 	
-	public String date = null;
-	public String id = null;
+	private String date = null;
+	private String id = null;
 	
 	public Pairer(String date, String id) {
     	this.date = date;

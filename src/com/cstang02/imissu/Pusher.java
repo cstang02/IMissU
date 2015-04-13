@@ -14,12 +14,19 @@ import com.baidu.yun.channel.model.PushUnicastMessageResponse;
 public class Pusher implements Runnable {
 	private BaiduChannelClient channelClient = new BaiduChannelClient(new ChannelKeyPair(Utils.API_KEY, Utils.API_SECRET));
 	
-	public String userId = null;
-	public String message = null;
+	private String userId = null;
+	private String message = null;
+	private boolean feedback = true; 
 	
     public Pusher(String id, String msg) {
     	userId = id;
     	message = msg;
+    }
+    
+    public Pusher(String id, String msg, boolean fb) {
+    	userId = id;
+    	message = msg;
+    	feedback = fb;
     }
  
 	@Override
@@ -34,7 +41,7 @@ public class Pusher implements Runnable {
 
             PushUnicastMessageResponse response = channelClient.pushUnicastMessage(request);
             
-            if (response.getSuccessAmount() > 0)
+            if (feedback && response.getSuccessAmount() > 0)
             {
             	Message msg = new Message();
             	msg.what = 1;

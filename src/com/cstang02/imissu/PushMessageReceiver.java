@@ -106,9 +106,17 @@ public class PushMessageReceiver extends FrontiaPushMessageReceiver {
         		Utils.Message = "";
         		
         		if (Utils.TargetId.equals(strs[0]))
-	        	{
-	        		Utils.Toast("I missed you " + strs[1] + " times today!", 1);
-	        		((Vibrator)Utils.App.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(pattern, -1);
+	        	{	
+        			if (strs[1].equals("0"))
+        			{
+        				Utils.Toast("Success!", 0);
+        			}
+        			else
+        			{
+        				new Thread(new Pusher(Utils.TargetId, Utils.UserId + " 0", false)).start();
+        				Utils.Toast("I missed you " + strs[1] + " times today!", 1);
+        				((Vibrator)Utils.App.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(pattern, -1);
+        			}
 	        	}
         	}
         	catch (Exception e) {}
