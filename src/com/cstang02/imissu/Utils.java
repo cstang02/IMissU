@@ -31,7 +31,7 @@ public class Utils {
     public static final String INTERNAL_ACTION = "com.cstang02.imissu.action.internal";
     
     public static final String API_KEY = "XwkXMdBDHbccgGRiooyj45HG";
-    public static final String API_SECRET = "7WhGYmhyA3S2kbORjXq9nby5RhzhKXER";
+    public static final String API_SECRET = "";
 	
     public static String logStringCache = "";
     public static String UserId = "";
